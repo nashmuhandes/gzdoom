@@ -11,6 +11,7 @@ version "4.3"
 #include "zscript/dictionary.zs"
 
 #include "zscript/actors/actor.zs"
+#include "zscript/actors/fastactor.zs"
 #include "zscript/actors/checks.zs"
 #include "zscript/actors/interaction.zs"
 #include "zscript/actors/inventory_util.zs"

@@ -1,0 +1,3 @@
+class FastActor : Actor native
+{
+}

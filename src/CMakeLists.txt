@@ -858,6 +858,7 @@ set (PCH_SOURCES
 	playsim/p_map.cpp
 	playsim/p_maputl.cpp
 	playsim/p_mobj.cpp
+	playsim/a_fastactor.cpp
 	p_openmap.cpp
 	playsim/p_pspr.cpp
 	p_saveg.cpp
