@@ -653,6 +653,7 @@ file( GLOB HEADER_FILES
 	rendering/hwrenderer/*.h
 	rendering/hwrenderer/scene/*.h
 	*.h
+	mycustomclasses/*.h
 )
 
 set ( SWRENDER_SOURCES
@@ -1177,6 +1178,8 @@ set (PCH_SOURCES
 	utility/nodebuilder/nodebuild_extract.cpp
 	utility/nodebuilder/nodebuild_gl.cpp
 	utility/nodebuilder/nodebuild_utility.cpp
+
+	mycustomclasses/MyCustomClass.cpp
 )
 
 if( ${HAVE_VM_JIT} )
@@ -1299,6 +1302,7 @@ include_directories( .
 	../libraries/glslang/spirv
 	${CMAKE_BINARY_DIR}/libraries/gdtoa
 	${SYSTEM_SOURCES_DIR}
+	mycustomclasses
 )
 
 add_dependencies( zdoom revision_check )
@@ -1494,3 +1498,4 @@ source_group("Statusbar" REGULAR_EXPRESSION "^${CMAKE_CURRENT_SOURCE_DIR}/g_stat
 source_group("Versioning" FILES version.h win32/zdoom.rc)
 source_group("Xlat" REGULAR_EXPRESSION "^${CMAKE_CURRENT_SOURCE_DIR}/xlat/.+" FILES ${CMAKE_CURRENT_BINARY_DIR}/xlat_parser.c ${CMAKE_CURRENT_BINARY_DIR}/xlat_parser.h)
 source_group("Source Files" FILES ${CMAKE_CURRENT_BINARY_DIR}/sc_man_scanner.h common/engine/sc_man_scanner.re)
+source_group("My Custom Classes" REGULAR_EXPRESSION "^${CMAKE_CURRENT_SOURCE_DIR}/mycustomclasses/.+")

@@ -290,3 +290,5 @@ version "4.5"
 
 #include "zscript/compatibility.zs"
 #include "zscript/scriptutil/scriptutil.zs"
+
+#include "zscript/MyCustomClass/MyCustomClass.zs"
