@@ -352,6 +352,9 @@ static FFlagDef ActorFlagDefs[]=
 	DEFINE_FLAG(RF, SPRITEFLIP, AActor, renderflags),
 	DEFINE_FLAG(RF, ZDOOMTRANS, AActor, renderflags),
 
+	DEFINE_FLAG(RF2, INVISIBLEINMIRRORS, AActor, renderflags2),
+	DEFINE_FLAG(RF2, ONLYVISIBLEINMIRRORS, AActor, renderflags2),
+
 	// Bounce flags
 	DEFINE_FLAG2(BOUNCE_Walls, BOUNCEONWALLS, AActor, BounceFlags),
 	DEFINE_FLAG2(BOUNCE_Floors, BOUNCEONFLOORS, AActor, BounceFlags),

@@ -704,6 +704,18 @@ void HWSprite::Process(HWDrawInfo *di, AActor* thing, sector_t * sector, area_t 
 			return;
 	}
 
+	// [Nash] filter visibility in mirrors
+	bool isInMirror = di->mCurrentPortal &&
+		(di->mCurrentPortal->mState->MirrorFlag > 0 || di->mCurrentPortal->mState->PlaneMirrorFlag > 0);
+	if (thing->renderflags2 & RF2_INVISIBLEINMIRRORS && isInMirror)
+	{
+		return;
+	}
+	else if (thing->renderflags2 & RF2_ONLYVISIBLEINMIRRORS && !isInMirror)
+	{
+		return;
+	}
+
 	// check renderrequired vs ~r_rendercaps, if anything matches we don't support that feature,
 	// check renderhidden vs r_rendercaps, if anything matches we do support that feature and should hide it.
 	if ((!r_debug_disable_vis_filter && !!(thing->RenderRequired & ~r_renderercaps)) ||
