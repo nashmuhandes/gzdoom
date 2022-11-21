@@ -1,10 +1,11 @@
-/*class Corona : Actor native
+class Corona : Actor native
 {
 	Default
 	{
 		RenderStyle "Add";
 		RenderRadius 1024.0;
 		+NOINTERACTION
+		+NOGRAVITY
 		+FORCEXYBILLBOARD
 	}
-}*/
+}
