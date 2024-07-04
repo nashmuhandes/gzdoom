@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 LABEL org.opencontainers.image.authors="CandiceJoy <candice@candicejoy.com>"
 LABEL author="CandiceJoy"
-LABEL description="GZDoom compilation image (Designed for GZDoom 4.11pre)"
-LABEL verion="4.11pre"
+LABEL description="Tierbind compilation image (Designed for Tierbind 4.13)"
+LABEL verion="4.13"
 
 # Update these as needed
 ENV GZ_ZMUSIC_URL="https://github.com/coelckers/ZMusic.git"
