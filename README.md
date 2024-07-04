@@ -1,8 +1,8 @@
-# Welcome to GZDoom!
+# Welcome to Tierbind!
 
-[![Continuous Integration](https://github.com/ZDoom/gzdoom/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/ZDoom/gzdoom/actions/workflows/continuous_integration.yml)
+[![Continuous Integration](https://github.com/nashmuhandes/Tierbind/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/nashmuhandes/Tierbind/actions/workflows/continuous_integration.yml)
 
-## GZDoom is a modder-friendly OpenGL and Vulkan source port based on the DOOM engine
+## Tierbind is a modder-friendly OpenGL and Vulkan source port based on the DOOM engine
 
 Copyright (c) 1998-2023 ZDoom + GZDoom teams, and contributors
 
