@@ -106,7 +106,7 @@ bool FGenericStartScreen::DoProgress(int advance)
 
 	if (CurPos < MaxPos)
 	{
-		RgbQuad bcolor = { 2, 25, 87, 255 }; // todo: make configurable
+		RgbQuad bcolor = { 180, 85, 140, 255 }; // todo: make configurable
 		int numnotches = 200 * 2;
 		notch_pos = ((CurPos + 1) * numnotches) / MaxPos;
 		if (notch_pos != NotchPos)
