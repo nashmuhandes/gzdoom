@@ -131,6 +131,12 @@ public:
 	void SetMusicVolume (float volume)
 	{
 	}
+	void BeginAudioGameTick()
+	{
+	}
+	void EndAudioGameTick()
+	{
+	}
 	SoundHandle LoadSound(uint8_t *sfxdata, int length, int def_loop_start, int def_loop_end)
 	{
 		SoundHandle retval = { NULL };

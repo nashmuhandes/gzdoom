@@ -113,6 +113,9 @@ public:
 	virtual unsigned int GetSampleLength(SoundHandle sfx) = 0;	// Gets the length of a sound at its default frequency
 	virtual float GetOutputRate() = 0;
 
+	virtual void BeginAudioGameTick() = 0;
+	virtual void EndAudioGameTick() = 0;
+
 	// Streaming sounds.
 	virtual SoundStream *CreateStream (SoundStreamCallback callback, int buffbytes, int flags, int samplerate, void *userdata) = 0;
 

@@ -1235,15 +1235,19 @@ void D_DoomLoop ()
 				M_Ticker ();
 				G_Ticker ();
 				// [RH] Use the consoleplayer's camera to update sounds
+				GSnd->BeginAudioGameTick();
 				S_UpdateSounds (players[consoleplayer].camera);	// move positional sounds
 				gametic++;
 				maketic++;
+				GSnd->EndAudioGameTick();
 				GC::CheckGC ();
 				Net_NewMakeTic ();
 			}
 			else
 			{
+				GSnd->BeginAudioGameTick();
 				TryRunTics (); // will run at least one tic
+				GSnd->EndAudioGameTick();
 			}
 			// Update display, next frame, with current state.
 			I_StartTic ();

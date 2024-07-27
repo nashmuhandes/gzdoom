@@ -40,7 +40,8 @@ public:
 	virtual unsigned int GetMSLength(SoundHandle sfx);
 	virtual unsigned int GetSampleLength(SoundHandle sfx);
 	virtual float GetOutputRate();
-
+	virtual void BeginAudioGameTick();
+	virtual void EndAudioGameTick();
 	// Streaming sounds.
 	virtual SoundStream *CreateStream(SoundStreamCallback callback, int buffbytes, int flags, int samplerate, void *userdata);
 
@@ -83,6 +84,9 @@ public:
 	virtual void PrintStatus();
 	virtual void PrintDriversList();
 	virtual FString GatherStats();
+
+	// Defer audio update.
+	bool isInGameTick;
 
 private:
     struct {

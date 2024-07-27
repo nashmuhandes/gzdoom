@@ -959,6 +959,9 @@ void OpenALSoundRenderer::RemoveStream(OpenALSoundStream *stream)
 		Streams.Delete(idx);
 }
 
+void OpenALSoundRenderer::BeginAudioGameTick() { isInGameTick = true; alDeferUpdatesSOFT(); }
+void OpenALSoundRenderer::EndAudioGameTick() { isInGameTick = false; alProcessUpdatesSOFT(); }
+
 void OpenALSoundRenderer::SetSfxVolume(float volume)
 {
 	SfxVolume = volume;
@@ -972,14 +975,14 @@ void OpenALSoundRenderer::SetSfxVolume(float volume)
 			ALuint source = GET_PTRID(schan->SysChannel);
 			volume = SfxVolume;
 
-			alDeferUpdatesSOFT();
+			if (!isInGameTick) alDeferUpdatesSOFT();
 			alSourcef(source, AL_MAX_GAIN, volume);
 			alSourcef(source, AL_GAIN, volume * schan->Volume);
 		}
 		schan = schan->NextChan;
 	}
 
-	alProcessUpdatesSOFT();
+	if (!isInGameTick) alProcessUpdatesSOFT();
 
 	getALError();
 }
@@ -1511,7 +1514,7 @@ void OpenALSoundRenderer::ChannelVolume(FISoundChannel *chan, float volume)
 	if(chan == NULL || chan->SysChannel == NULL)
 		return;
 
-	alDeferUpdatesSOFT();
+	if (!isInGameTick) alDeferUpdatesSOFT();
 
 	ALuint source = GET_PTRID(chan->SysChannel);
 	alSourcef(source, AL_GAIN, SfxVolume * volume);
@@ -1522,7 +1525,7 @@ void OpenALSoundRenderer::ChannelPitch(FISoundChannel *chan, float pitch)
 	if (chan == NULL || chan->SysChannel == NULL)
 		return;
 
-	alDeferUpdatesSOFT();
+	if (!isInGameTick) alDeferUpdatesSOFT();
 
 	ALuint source = GET_PTRID(chan->SysChannel);
 	if (WasInWater && !(chan->ChanFlags & CHANF_UI))
@@ -1668,7 +1671,7 @@ void OpenALSoundRenderer::UpdateSoundParams3D(SoundListener *listener, FISoundCh
 	float dist_sqr = (float)(pos - listener->position).LengthSquared();
 	chan->DistanceSqr = dist_sqr;
 
-	alDeferUpdatesSOFT();
+	if (!isInGameTick) alDeferUpdatesSOFT();
 	ALuint source = GET_PTRID(chan->SysChannel);
 
 	if(dist_sqr < (0.0004f*0.0004f))
@@ -1697,7 +1700,7 @@ void OpenALSoundRenderer::UpdateListener(SoundListener *listener)
 	if(!listener->valid)
 		return;
 
-	alDeferUpdatesSOFT();
+	if (!isInGameTick) alDeferUpdatesSOFT();
 
 	float angle = listener->angle;
 	ALfloat orient[6];
@@ -1821,7 +1824,7 @@ void OpenALSoundRenderer::UpdateListener(SoundListener *listener)
 
 void OpenALSoundRenderer::UpdateSounds()
 {
-	alProcessUpdatesSOFT();
+	if (!isInGameTick) alProcessUpdatesSOFT();
 
 	if(ALC.EXT_disconnect)
 	{
